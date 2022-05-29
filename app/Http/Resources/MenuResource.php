@@ -17,9 +17,11 @@ class MenuResource extends JsonResource
     {
         return [
             'id'   => $this->resource->id,
-            'menu' => $this->resource->menu,
-            'Menu' => $this->resource->Menu,
-            'chiledMenu' => $this->resource->chiledMenu,
+            'menu' => $this->resource->menu,[
+                'SubMenu' => $this->resource->Menu,[
+                    'ChiledMenu' => $this->resource->chiledMenu,
+                ]
+            ],
         ];
     }
 }
