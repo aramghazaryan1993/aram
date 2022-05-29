@@ -15,6 +15,11 @@ class Menu extends Model
 
     public function Menu()
     {
-        return $this->hasMany(SubMenu::class);
+        return $this->hasMany(SubMenu::class,'menu_id','id');
+    }
+
+    public function chiledMenu()
+    {
+        return $this->hasMany(ChildeMenu::class,'submenu_id','id');
     }
 }

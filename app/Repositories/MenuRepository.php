@@ -16,7 +16,7 @@ class MenuRepository
      */
     public function getMenu(){
 //        return Menu::all();
-        return Menu::all()->load('Menu');
+        return Menu::all()->load(['Menu','chiledMenu']);
     }
 
 }
