@@ -15,8 +15,8 @@ class MenuRepository
      * @return \App\Models\Menu[]|\Illuminate\Database\Eloquent\Collection
      */
     public function getMenu(){
-        return Menu::all();
-//      return Menu::all()->load('Menu');
+//        return Menu::all();
+        return Menu::all()->load('Menu');
     }
 
 }
