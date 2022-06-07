@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Menu;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class MenuResource extends JsonResource
@@ -15,13 +16,6 @@ class MenuResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'id'   => $this->resource->id,
-            'menu' => $this->resource->menu,[
-                'SubMenu' => $this->resource->Menu,[
-                    'ChiledMenu' => $this->resource->chiledMenu,
-                ]
-            ],
-        ];
+        return Menu::getList();
     }
 }
