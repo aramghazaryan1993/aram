@@ -29,26 +29,31 @@ class Menu extends Model
 
         $parents = static::whereNull('parent_id')->get();
 
+
         foreach ($parents as $index => $parent) {
 
-            $menu[$parent->name] = [
-                'name' => $parent->name,
-                'id' => $parent->id
+            $menu[] = (object)[
+                'name' => $parents[$index]->name,
+                'id' => $parents[$index]->id
             ];
 
-            $childs = static::getChilds($parent->id);
-
+            $childs = static::getChilds($parents[$index]->id);
+            if(count($childs)>0){
+                $menu[$index]->subMenue=[];
+            }
             foreach ($childs as $index2 => $child) {
 
-                $menu[$parent->name][$child->name] = [
-                    'name' => $child->name,
-                    'id' => $child->id
+                $menu[$index]->subMenue[] = (object)[
+                    'name' => $childs[$index2]->name,
+                    'id' => $childs[$index2]->id
                 ];
 
-                $subChilds = static::getChilds($child->id);
-
+                $subChilds = static::getChilds($childs[$index2]->id);
+                if(count($subChilds)>0){
+                    $menu[$index]->subMenue[$index2]->subMenue=[];
+                }
                 foreach ($subChilds as $index3 => $subChild) {
-                    $menu[$parent->name][$child->name][$subChild->name] = [
+                    $menu[$index]->subMenue[$index2]->subMenue[] = (object)[
                         'name' => $subChild->name,
                         'id' => $subChild->id
                     ];
