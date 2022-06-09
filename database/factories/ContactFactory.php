@@ -28,8 +28,8 @@ class ContactFactory extends Factory
             'text_footer' => $this->faker->text,
             'facebook'    => $this->faker->url,
             'instagram'   => $this->faker->url,
-            'logo_header' => $this->faker->image,
-            'logo_footer' => $this->faker->image,
+            'logo' => $this->faker->image,
+            'image' => $this->faker->image,
         ];
     }
 }

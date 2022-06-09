@@ -32,7 +32,7 @@ class ContactController extends BaseController
      */
     public function update(ContactRequest $request)
     {
-       $contact = $this->contactRepository->update($request->phone, $request->email, $request->working, $request->text_header, $request->text_footer, $request->facebook, $request->instagram, $request->logo_header, $request->logo_footer);
+       $contact = $this->contactRepository->update($request->phone, $request->email, $request->working, $request->text_header, $request->text_footer, $request->facebook, $request->instagram, $request->logo, $request->image);
             return $this->response(new ContactResource($contact))->setStatusCode(Response::HTTP_CREATED);
     }
 
