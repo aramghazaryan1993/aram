@@ -34,6 +34,7 @@ class Menu extends Model
 
             $menu[] = (object)[
                 'name' => $parents[$index]->name,
+                'url' => $parents[$index]->url,
                 'id' => $parents[$index]->id
             ];
 
@@ -45,6 +46,7 @@ class Menu extends Model
 
                 $menu[$index]->subMenue[] = (object)[
                     'name' => $childs[$index2]->name,
+                    'url' => $childs[$index2]->url,
                     'id' => $childs[$index2]->id
                 ];
 
@@ -55,6 +57,7 @@ class Menu extends Model
                 foreach ($subChilds as $index3 => $subChild) {
                     $menu[$index]->subMenue[$index2]->subMenue[] = (object)[
                         'name' => $subChild->name,
+                        'url' => $subChild->url,
                         'id' => $subChild->id
                     ];
                 }
