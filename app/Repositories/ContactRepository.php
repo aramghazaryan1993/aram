@@ -27,14 +27,14 @@ class ContactRepository
      *
      * @return \App\Models\Contact
      */
-    public function update(string $phone, string $email,string $working, string $textHeader, string $textFooter, string $facebook, string $instagram, $logoHeader, $logoFooter): Contact
+    public function update(string $phone, string $email,string $working, string $textHeader, string $textFooter, string $facebook, string $instagram, $logo, $logoFooter): Contact
     {
         $editContact = Contact::first();
-        $imageHeader = time().'_'.$logoHeader->getClientOriginalName();
-        Storage::disk('public')->put($imageHeader, file_get_contents($logoHeader->getRealPath()));
+        $imgLogo= time().'_'.$logo->getClientOriginalName();
+        Storage::disk('public')->put($imgLogo, file_get_contents($logo->getRealPath()));
 
-        if(Storage::exists('public/'.$imageHeader)){
-            Storage::delete('public/'.$imageHeader);
+        if(Storage::exists('public/'.$imgLogo)){
+            Storage::delete('public/'.$imgLogo);
         }
 
         $imageFooter = time().'_'.$logoFooter->getClientOriginalName();
@@ -52,8 +52,8 @@ class ContactRepository
         $editContact->text_footer = $textFooter;
         $editContact->facebook = $facebook;
         $editContact->instagram = $instagram;
-        $editContact->logo_header = $imageHeader;
-        $editContact->logo_footer = $imageFooter;
+        $editContact->logo = $imgLogo;
+        $editContact->image = $imageFooter;
         $editContact->save();
             return $editContact;
     }

@@ -44,7 +44,7 @@ class MenuController extends BaseController
     public function getMenu()
     {
         $getMenu = $this->menuRepository->getMenu();
-        return $this->response(MenuResource::collection($getMenu))->setStatusCode(Response::HTTP_OK);
+        return $this->response($getMenu)->setStatusCode(Response::HTTP_OK);
     }
 
     /**
