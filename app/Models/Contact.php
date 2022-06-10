@@ -13,7 +13,7 @@ use Illuminate\Database\Eloquent\Model;
 class Contact extends Model
 {
     use HasFactory;
-    protected $table='contacts';
+    protected $table = 'contacts';
 
     protected $fillable = [
         'phone',
@@ -23,7 +23,7 @@ class Contact extends Model
         'text_footer',
         'facebook',
         'instagram',
-        'logo_header',
-        'logo_footer',
+        'logo',
+        'image',
     ];
 }

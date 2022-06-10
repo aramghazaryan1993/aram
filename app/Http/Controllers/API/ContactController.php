@@ -8,7 +8,6 @@ use App\Repositories\ContactRepository;
 use App\Http\Resources\ContactResource;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Response;
-use Illuminate\Support\Facades\DB;
 
 class ContactController extends BaseController
 {
@@ -32,8 +31,8 @@ class ContactController extends BaseController
      */
     public function update(ContactRequest $request)
     {
-       $contact = $this->contactRepository->update($request->phone, $request->email, $request->working, $request->text_header, $request->text_footer, $request->facebook, $request->instagram, $request->logo, $request->image);
-            return $this->response(new ContactResource($contact))->setStatusCode(Response::HTTP_CREATED);
+        $contact = $this->contactRepository->update($request->phone, $request->email, $request->working, $request->text_header, $request->text_footer, $request->facebook, $request->instagram, $request->logo, $request->image);
+        return $this->response(new ContactResource($contact))->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
@@ -43,6 +42,6 @@ class ContactController extends BaseController
     public function getContact()
     {
         $getContact = $this->contactRepository->getContact();
-            return $this->response(ContactResource::collection($getContact))->setStatusCode(Response::HTTP_OK);
+        return $this->response(ContactResource::collection($getContact))->setStatusCode(Response::HTTP_OK);
     }
 }

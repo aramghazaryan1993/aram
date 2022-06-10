@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class ContactResource extends JsonResource
 {
@@ -23,8 +24,8 @@ class ContactResource extends JsonResource
             'text_footer' => $this->resource->text_footer,
             'facebook'    => $this->resource->facebook,
             'instagram'   => $this->resource->instagram,
-            'logo_header' => $this->resource->logo_header,
-            'logo_footer' => $this->resource->logo_footer,
+            'logo'        => Storage::url('default/' . $this->resource->logo),
+            'image'       => Storage::url('default/' . $this->resource->image)
         ];
     }
 }

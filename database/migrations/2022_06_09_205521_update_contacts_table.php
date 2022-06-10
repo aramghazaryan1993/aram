@@ -13,10 +13,10 @@ class UpdateContactsTable extends Migration
      */
     public function up()
     {
-        Schema::table('contacts', function (Blueprint $table) {
-            $table->renameColumn('logo_header','logo');
-            $table->renameColumn('logo_footer','image');
-        });
+        // Schema::table('contacts', function (Blueprint $table) {
+        //     $table->renameColumn('logo_header','logo');
+        //     $table->renameColumn('logo_footer','image');
+        // });
     }
 
     /**
@@ -26,9 +26,9 @@ class UpdateContactsTable extends Migration
      */
     public function down()
     {
-        Schema::table('contacts', function (Blueprint $table) {
-            $table->renameColumn('logo','logo_header');
-            $table->renameColumn('image','logo_footer');
-        });
+        // Schema::table('contacts', function (Blueprint $table) {
+        //     $table->renameColumn('logo','logo_header');
+        //     $table->renameColumn('image','logo_footer');
+        // });
     }
 }

@@ -13,8 +13,8 @@ use Illuminate\Foundation\Http\FormRequest;
  * @property string  $text_footer
  * @property string  $facebook
  * @property string  $instagram
- * @property string  $logo_header
- * @property string  $logo_footer
+ * @property string  $logo
+ * @property string  $image
  * @package App\Http\Requests
  */
 class ContactRequest extends FormRequest
@@ -34,8 +34,8 @@ class ContactRequest extends FormRequest
             'text_footer' => 'required|min:2',
             'facebook'    => 'required|min:2|max:250',
             'instagram'   => 'required|min:2|max:250',
-            'logo_header' => 'required|mimes:jpeg,jpg,png,gif|max:10000',
-            'logo_footer' => 'required|mimes:jpeg,jpg,png,gif|max:10000'
+            'logo'        => 'required',
+            'image'       => 'required'
         ];
     }
 }
