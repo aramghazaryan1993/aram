@@ -64,7 +64,7 @@ class ContactRepository
                 $data = str_replace('data:image/png;base64,', '', $imageHeader);
                 try {
                     $image = Str::random(10) . '.' . 'webp';
-                    Storage::disk('public')->put('default/' . $logoImage, base64_decode($data));
+                    Storage::disk('public')->put('default/' . $image, base64_decode($data));
                 } catch (\Exception $ex) {
                     return response()->json(['errors' => ['image' => ['Error while deconding the image']], 'status' => false], 422);
                 }
