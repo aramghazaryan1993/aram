@@ -19,6 +19,11 @@ Route::get('test', [\App\Http\Controllers\API\ContactController::class, 'test'])
 
 Route::get('get-home',[\App\Http\Controllers\API\HomeController::class,'getHome']);
 Route::post('update-home/{id}',[\App\Http\Controllers\API\HomeController::class,'update']);
+
+Route::get('get-home-gallery',[\App\Http\Controllers\API\HomeController::class,'getHomeGallery']);
+Route::post('add-home-gallery',[\App\Http\Controllers\API\HomeController::class,'addHomeGallery']);
+Route::post('update-home-gallery/{id}',[\App\Http\Controllers\API\HomeController::class,'updateHomeGallery']);
+
 Route::get('contact', [\App\Http\Controllers\API\ContactController::class, 'getContact']);
 Route::post('update-contact', [\App\Http\Controllers\API\ContactController::class, 'update']);
 

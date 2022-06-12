@@ -78,6 +78,14 @@ class ContactRepository
             }
         }
 
+        if(Storage::exists('default/'.$editContact->logo)){
+            Storage::delete('default/'.$editContact->logo);
+        }
+
+        if(Storage::exists('default/'.$editContact->image)){
+            Storage::delete('default/'.$editContact->image);
+        }
+
         $editContact->phone = $phone;
         $editContact->email = $email;
         $editContact->working = $working;
