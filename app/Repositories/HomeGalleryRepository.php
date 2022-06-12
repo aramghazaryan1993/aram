@@ -83,5 +83,19 @@ class HomeGalleryRepository
         return $editHomeGallery;
     }
 
+    /**
+     * @param int $id
+     *
+     * @return mixed
+     */
+    public function deleteHomeGallery(int $id)
+    {
+        $deleteHomeGallery = HomeGallery::find($id);
+        if(Storage::exists('home_gallery/'.$deleteHomeGallery->image)){
+            Storage::delete('home_gallery/'.$deleteHomeGallery->image);
+        }
+            return $deleteHomeGallery->delete();
+    }
+
 
 }

@@ -8,6 +8,7 @@ use App\Repositories\HomeRepository;
 use App\Repositories\HomeGalleryRepository;
 use App\Http\Resources\HomeResource;
 use App\Http\Resources\HomeGalleryResource;
+use App\Http\Resources\MassageResource;
 use App\Http\Requests\HomeRequest;
 use App\Http\Requests\HomeGalleryRequest;
 use Illuminate\Http\Response;
@@ -92,5 +93,17 @@ class HomeController extends BaseController
     {
         $editHomeGallery = $this->homeGalleryRepository->updateHomeGallery($request->image, $id);
         return $this->response(new HomeGalleryResource($editHomeGallery))->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
+     * DELETE: function delete home gallery
+     */
+    public function deleteHomeGallery(int $id)
+    {
+        $this->homeGalleryRepository->deleteHomeGallery($id);
+        return $this->response(new MassageResource('Delete home gallery successfully.'))->setStatusCode(Response::HTTP_GONE);
     }
 }
