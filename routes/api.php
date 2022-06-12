@@ -23,6 +23,7 @@ Route::post('update-home/{id}',[\App\Http\Controllers\API\HomeController::class,
 Route::get('get-home-gallery',[\App\Http\Controllers\API\HomeController::class,'getHomeGallery']);
 Route::post('add-home-gallery',[\App\Http\Controllers\API\HomeController::class,'addHomeGallery']);
 Route::post('update-home-gallery/{id}',[\App\Http\Controllers\API\HomeController::class,'updateHomeGallery']);
+Route::delete('delete-home-gallery/{id}',[\App\Http\Controllers\API\HomeController::class,'deleteHomeGallery']);
 
 Route::get('contact', [\App\Http\Controllers\API\ContactController::class, 'getContact']);
 Route::post('update-contact', [\App\Http\Controllers\API\ContactController::class, 'update']);
