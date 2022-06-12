@@ -13,7 +13,7 @@ use Illuminate\Support\Str;
  * @param string $phone
  *
  * @return Contact
- *@package App\Repositories
+ * @package App\Repositories
  */
 class ContactRepository
 {
@@ -29,18 +29,19 @@ class ContactRepository
 
 
     /**
-     * 
-     * @param string $phone 
-     * @param string $email 
-     * @param string $working 
-     * @param string $textHeader 
-     * @param string $textFooter 
-     * @param string $facebook 
-     * @param string $instagram 
-     * @param mixed $logo 
-     * @param mixed $imageHeader 
-     * @return Contact 
-     * @throws BindingResolutionException 
+     *
+     * @param string $phone
+     * @param string $email
+     * @param string $working
+     * @param string $textHeader
+     * @param string $textFooter
+     * @param string $facebook
+     * @param string $instagram
+     * @param mixed  $logo
+     * @param mixed  $imageHeader
+     *
+     * @return Contact
+     * @throws BindingResolutionException
      */
     public function update(string $phone, string $email, string $working, string $textHeader, string $textFooter, string $facebook, string $instagram, $logo, $imageHeader): Contact
     {
@@ -54,7 +55,10 @@ class ContactRepository
                     $logoImage = Str::random(10) . '.' . 'webp';
                     Storage::disk('public')->put('default/' . $logoImage, base64_decode($data));
                 } catch (\Exception $ex) {
-                    return response()->json(['errors' => ['logo' => ['Error while deconding the logo']], 'status' => false], 422);
+                    return response()->json([
+                        'errors' => ['logo' => ['Error while deconding the logo']],
+                        'status' => false,
+                    ], 422);
                 }
             }
         }
@@ -66,7 +70,10 @@ class ContactRepository
                     $image = Str::random(10) . '.' . 'webp';
                     Storage::disk('public')->put('default/' . $image, base64_decode($data));
                 } catch (\Exception $ex) {
-                    return response()->json(['errors' => ['image' => ['Error while deconding the image']], 'status' => false], 422);
+                    return response()->json([
+                        'errors' => ['image' => ['Error while deconding the image']],
+                        'status' => false,
+                    ], 422);
                 }
             }
         }
@@ -82,6 +89,7 @@ class ContactRepository
         $editContact->logo = $logoImage;
         $editContact->image = $image;
         $editContact->save();
+
         return $editContact;
     }
 
