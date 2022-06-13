@@ -1,14 +1,16 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\Home;
 
 /**
  * Class HomeRepository
- *
- *
- * @return Home
  * @package App\Repositories
+ * @param string $titleOne 
+ * @param string $titleTwo 
+ * @param int $id 
+ * @return Home
  */
 
 class HomeRepository
@@ -22,18 +24,39 @@ class HomeRepository
     }
 
     /**
-     * @param $titleOne
-     * @param $titleTwo
-     * @param $id
-     *
-     * @return mixed
+     * 
+     * @param string $titleOne 
+     * @param string $titleTwo 
+     * @return Home 
      */
-    public function update($titleOne,$titleTwo,$id)
+    public function addHome(string $titleOne, string $titleTwo): Home
+    {
+        return Home::create(['title_one' => $titleOne, 'title_two' => $titleTwo]);
+    }
+
+    /**
+     * 
+     * @param string $titleOne 
+     * @param string $titleTwo 
+     * @param int $id 
+     * @return Home 
+     */
+    public function update(string $titleOne, string $titleTwo, int $id): Home
     {
         $editHome = Home::find($id);
         $editHome->title_one = $titleOne;
         $editHome->title_two = $titleTwo;
         $editHome->save();
         return $editHome;
+    }
+
+    /**
+     * 
+     * @param int $id 
+     * @return mixed 
+     */
+    public function delete(int $id)
+    {
+        return Home::where('id', $id)->delete();
     }
 }

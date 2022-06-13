@@ -8,12 +8,18 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
- * Class ProductRepository
- *
- * @param string $phone
- *
- * @return Contact
+ * Class ContactRepository
  * @package App\Repositories
+ * @param string $phone 
+ * @param string $email 
+ * @param string $working 
+ * @param string $textHeader 
+ * @param string $textFooter 
+ * @param string $facebook 
+ * @param string $instagram 
+ * @param string $logo 
+ * @param string $imageHeader 
+ * @return Contact
  */
 class ContactRepository
 {
@@ -27,23 +33,29 @@ class ContactRepository
         return Contact::factory()->count($count)->create();
     }
 
+    /**
+     * @return \App\Models\Contact[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getContact()
+    {
+        return Contact::all();
+    }
 
     /**
-     *
-     * @param string $phone
-     * @param string $email
-     * @param string $working
-     * @param string $textHeader
-     * @param string $textFooter
-     * @param string $facebook
-     * @param string $instagram
-     * @param mixed  $logo
-     * @param mixed  $imageHeader
-     *
-     * @return Contact
-     * @throws BindingResolutionException
+     * 
+     * @param string $phone 
+     * @param string $email 
+     * @param string $working 
+     * @param string $textHeader 
+     * @param string $textFooter 
+     * @param string $facebook 
+     * @param string $instagram 
+     * @param string $logo 
+     * @param string $imageHeader 
+     * @return Contact 
+     * @throws BindingResolutionException 
      */
-    public function update(string $phone, string $email, string $working, string $textHeader, string $textFooter, string $facebook, string $instagram, $logo, $imageHeader): Contact
+    public function update(string $phone, string $email, string $working, string $textHeader, string $textFooter, string $facebook, string $instagram, string $logo, string $imageHeader): Contact
     {
 
         $editContact = Contact::first();
@@ -78,12 +90,12 @@ class ContactRepository
             }
         }
 
-        if(Storage::exists('default/'.$editContact->logo)){
-            Storage::delete('default/'.$editContact->logo);
+        if (Storage::exists('default/' . $editContact->logo)) {
+            Storage::delete('default/' . $editContact->logo);
         }
 
-        if(Storage::exists('default/'.$editContact->image)){
-            Storage::delete('default/'.$editContact->image);
+        if (Storage::exists('default/' . $editContact->image)) {
+            Storage::delete('default/' . $editContact->image);
         }
 
         $editContact->phone = $phone;
@@ -97,15 +109,6 @@ class ContactRepository
         $editContact->logo = $logoImage;
         $editContact->image = $image;
         $editContact->save();
-
         return $editContact;
-    }
-
-    /**
-     * @return \App\Models\Contact[]|\Illuminate\Database\Eloquent\Collection
-     */
-    public function getContact()
-    {
-        return Contact::all();
     }
 }
