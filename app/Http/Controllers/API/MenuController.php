@@ -64,5 +64,4 @@ class MenuController extends BaseController
         $getChildeMenu = $this->childeMenuRepository->getChildeMenu();
         return $this->response(ChildeMenuResource::collection($getChildeMenu))->setStatusCode(Response::HTTP_OK);
     }
-
 }

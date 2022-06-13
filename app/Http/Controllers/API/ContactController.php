@@ -9,6 +9,11 @@ use App\Http\Resources\ContactResource;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Response;
 
+/**
+ * 
+ * @package App\Http\Controllers\API
+ * @param ContactRequest $request
+ */
 class ContactController extends BaseController
 {
     /**

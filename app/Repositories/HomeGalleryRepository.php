@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\HomeGallery;
@@ -7,10 +8,11 @@ use Illuminate\Support\Str;
 
 /**
  * Class HomeGalleryRepository
- *
- *
- * @return HomeGallery
  * @package App\Repositories
+ * @param string $image
+ * @param int    $id
+ * 
+ * @return HomeGallery
  */
 
 class HomeGalleryRepository
@@ -28,7 +30,7 @@ class HomeGalleryRepository
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addHomeGallery( string $image)
+    public function addHomeGallery(string $image): HomeGallery
     {
         if (!empty($image)) {
             if (!filter_var($image, FILTER_VALIDATE_URL)) {
@@ -55,7 +57,7 @@ class HomeGalleryRepository
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateHomeGallery(string $image, int $id)
+    public function updateHomeGallery(string $image, int $id): HomeGallery
     {
         if (!empty($image)) {
             if (!filter_var($image, FILTER_VALIDATE_URL)) {
@@ -74,8 +76,8 @@ class HomeGalleryRepository
 
         $editHomeGallery = HomeGallery::find($id);
 
-        if(Storage::exists('home_gallery/'.$editHomeGallery->image)){
-            Storage::delete('home_gallery/'.$editHomeGallery->image);
+        if (Storage::exists('home_gallery/' . $editHomeGallery->image)) {
+            Storage::delete('home_gallery/' . $editHomeGallery->image);
         }
 
         $editHomeGallery->image = $homeGallery;
@@ -91,11 +93,9 @@ class HomeGalleryRepository
     public function deleteHomeGallery(int $id)
     {
         $deleteHomeGallery = HomeGallery::find($id);
-        if(Storage::exists('home_gallery/'.$deleteHomeGallery->image)){
-            Storage::delete('home_gallery/'.$deleteHomeGallery->image);
+        if (Storage::exists('home_gallery/' . $deleteHomeGallery->image)) {
+            Storage::delete('home_gallery/' . $deleteHomeGallery->image);
         }
-            return $deleteHomeGallery->delete();
+        return $deleteHomeGallery->delete();
     }
-
-
 }
