@@ -53,7 +53,7 @@ class HomeRepository
     /**
      * 
      * @param int $id 
-     * @return mixed 
+     * @return Home 
      */
     public function delete(int $id)
     {

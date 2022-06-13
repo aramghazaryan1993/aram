@@ -11,7 +11,6 @@ use Illuminate\Support\Str;
  * @package App\Repositories
  * @param string $image
  * @param int    $id
- * 
  * @return HomeGallery
  */
 
@@ -50,7 +49,6 @@ class HomeGalleryRepository
         return HomeGallery::create(['image' => $homeGallery]);
     }
 
-
     /**
      * @param string $image
      * @param int    $id
@@ -88,7 +86,7 @@ class HomeGalleryRepository
     /**
      * @param int $id
      *
-     * @return mixed
+     * @return HomeGallery
      */
     public function deleteHomeGallery(int $id)
     {
