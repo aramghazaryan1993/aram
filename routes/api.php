@@ -14,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('register', [\App\Http\Controllers\API\AuthController::class, 'register']);
+Route::post('login', [\App\Http\Controllers\API\AuthController::class, 'login']);
+Route::get('get-user', [\App\Http\Controllers\API\AuthController::class, 'getUser']);
+Route::delete('delete-user/{id}', [\App\Http\Controllers\API\AuthController::class, 'delete']);
+
+
 Route::get('test', [\App\Http\Controllers\API\ContactController::class, 'test']);
 
 Route::get('get-home', [\App\Http\Controllers\API\HomeController::class, 'getHome']);
