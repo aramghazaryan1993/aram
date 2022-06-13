@@ -95,7 +95,6 @@ class HomeController extends BaseController
         return $this->response(new MassageResource('Delete home text successfully.'))->setStatusCode(Response::HTTP_GONE);
     }
 
-
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
      * GET: function for get home gallery
@@ -105,7 +104,6 @@ class HomeController extends BaseController
         $getHomeGallery = $this->homeGalleryRepository->getHomeGallery();
         return $this->response(HomeGalleryResource::collection($getHomeGallery))->setStatusCode(Response::HTTP_OK);
     }
-
 
     /**
      * @param \App\Http\Requests\HomeGalleryRequest $request

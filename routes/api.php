@@ -16,11 +16,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('test', [\App\Http\Controllers\API\ContactController::class, 'test']);
 
-
 Route::get('get-home', [\App\Http\Controllers\API\HomeController::class, 'getHome']);
 Route::post('add-home', [\App\Http\Controllers\API\HomeController::class, 'addHome']);
 Route::post('update-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'update']);
 Route::delete('delete-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'delete']);
+
+Route::get('get-adress-menu/{id}', [\App\Http\Controllers\API\AdressMenuController::class, 'getAdressMenu']);
+Route::post('add-adress-menu', [\App\Http\Controllers\API\AdressMenuController::class, 'addAdressMenu']);
+Route::post('update-adress-menu/{id}', [\App\Http\Controllers\API\AdressMenuController::class, 'updateAdressMenu']);
+Route::delete('delete-adress-menu/{id}', [\App\Http\Controllers\API\AdressMenuController::class, 'deleteAdressMenu']);
 
 Route::get('get-home-gallery', [\App\Http\Controllers\API\HomeController::class, 'getHomeGallery']);
 Route::post('add-home-gallery', [\App\Http\Controllers\API\HomeController::class, 'addHomeGallery']);
