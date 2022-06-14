@@ -7,16 +7,17 @@ use App\Models\User;
 use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Collection;
 
+/**
+ * Class UserRepository
+ * @package App\Repositories
+ * @param string $name
+ * @param string $email
+ * @param string $password
+ * @param string $id 
+ * @return User
+ */
 class UserRepository extends BaseController
 {
-    /**
-     * Class UserRepository
-     * @package App\Repositories
-     * @param string $name
-     * @param string $email
-     * @param string $password
-     */
-
     /**
      * @param string $name
      * @param string $email
@@ -33,10 +34,9 @@ class UserRepository extends BaseController
         return $success;
     }
 
-
     /**
      * 
-     * @return Collection<mixed, User> 
+     * @return User 
      */
     public function getUser()
     {
@@ -48,10 +48,10 @@ class UserRepository extends BaseController
      * @param string $name 
      * @param string $password 
      * @param string $id 
-     * @return mixed 
+     * @return User 
      * @throws BindingResolutionException 
      */
-    public function updateUser(string $name, string $password, string $id)
+    public function updateUser(string $name, string $password, string $id): User
     {
         $editUser = User::find($id);
         $editUser->name = $name;
@@ -60,11 +60,10 @@ class UserRepository extends BaseController
         return $editUser;
     }
 
-
     /**
      * 
      * @param int $id 
-     * @return mixed 
+     * @return User 
      */
     public function delete(int $id)
     {
