@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Http\Controllers\API\BaseController;
 use App\Models\User;
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Database\Eloquent\Collection;
 
 class UserRepository extends BaseController
@@ -42,11 +43,21 @@ class UserRepository extends BaseController
         return User::all();
     }
 
-    public function updateUser(string $name, string $email, string $password, string $id)
+    /**
+     * 
+     * @param string $name 
+     * @param string $password 
+     * @param string $id 
+     * @return mixed 
+     * @throws BindingResolutionException 
+     */
+    public function updateUser(string $name, string $password, string $id)
     {
         $editUser = User::find($id);
         $editUser->name = $name;
-        $editUser->email = $email;
+        $editUser->password = bcrypt($password);
+        $editUser->save();
+        return $editUser;
     }
 
 
@@ -58,5 +69,10 @@ class UserRepository extends BaseController
     public function delete(int $id)
     {
         return User::where('id', $id)->delete();
+    }
+
+    public function logout()
+    {
+        return auth()->user()->tokens()->delete();
     }
 }
