@@ -71,6 +71,11 @@ class UserRepository extends BaseController
         return User::where('id', $id)->delete();
     }
 
+    /**
+     * 
+     * @return mixed 
+     * @throws BindingResolutionException 
+     */
     public function logout()
     {
         return auth()->user()->tokens()->delete();
