@@ -107,7 +107,7 @@ class AuthController extends BaseController
      */
     public function delete($id)
     {
-        $this->authRepository->destroy($id);
+        $this->authRepository->delete($id);
         return $this->response(new MassageResource('User removed'))
             ->setStatusCode(Response::HTTP_GONE);
     }
