@@ -14,13 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', [\App\Http\Controllers\API\AuthController::class, 'register']);
 Route::post('login', [\App\Http\Controllers\API\AuthController::class, 'login']);
-Route::get('get-user', [\App\Http\Controllers\API\AuthController::class, 'getUser']);
-Route::delete('delete-user/{id}', [\App\Http\Controllers\API\AuthController::class, 'delete']);
 
+Route::middleware('auth:sanctum')->group(function () {
 
-Route::get('test', [\App\Http\Controllers\API\ContactController::class, 'test']);
+    Route::post('register', [\App\Http\Controllers\API\AuthController::class, 'register']);
+    Route::get('get-user', [\App\Http\Controllers\API\AuthController::class, 'getUser']);
+    Route::post('update-user/{id}', [\App\Http\Controllers\API\AuthController::class, 'updateUser']);
+    Route::delete('delete-user/{id}', [\App\Http\Controllers\API\AuthController::class, 'delete']);
+    Route::post('logout', [\App\Http\Controllers\API\AuthController::class, 'logout']);
+});
 
 Route::get('get-home', [\App\Http\Controllers\API\HomeController::class, 'getHome']);
 Route::post('add-home', [\App\Http\Controllers\API\HomeController::class, 'addHome']);
@@ -43,8 +46,3 @@ Route::post('update-contact', [\App\Http\Controllers\API\ContactController::clas
 Route::get('get-menu', [\App\Http\Controllers\API\MenuController::class, 'getMenu']);
 Route::get('get-submenu', [\App\Http\Controllers\API\MenuController::class, 'getSubMenu']);
 Route::get('get-childemenu', [\App\Http\Controllers\API\MenuController::class, 'getChildeMenu']);
-
-//Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-//    //return $request->user();
-//    Route::get('contact', [\App\Http\Controllers\API\ContactController::class, 'index']);
-//});

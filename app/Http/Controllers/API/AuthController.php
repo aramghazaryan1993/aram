@@ -74,6 +74,7 @@ class AuthController extends BaseController
      * @return Application|ResponseFactory|Response 
      * @throws BindingResolutionException 
      * @throws InvalidArgumentException 
+     * GET:Function for get user
      */
     public function getUser()
     {
@@ -81,9 +82,18 @@ class AuthController extends BaseController
         return $this->response(UserResource::collection($getUser))->setStatusCode(Response::HTTP_OK);
     }
 
-    public function updateUser(UserRequest $request, $id)
+    /**
+     * 
+     * @param Request $request 
+     * @param mixed $id 
+     * @return Application|ResponseFactory|Response 
+     * @throws BindingResolutionException 
+     * @throws InvalidArgumentException 
+     * POST:Function for update user
+     */
+    public function updateUser(Request $request, $id)
     {
-        $user = $this->authRepository->updateUser($request->name, $request->email, $request->password, $id);
+        $user = $this->authRepository->updateUser($request->name, $request->password, $id);
         return $this->response(new UserResource($user))->setStatusCode(Response::HTTP_CREATED);
     }
 
@@ -93,11 +103,26 @@ class AuthController extends BaseController
      * @return Application|ResponseFactory|Response 
      * @throws BindingResolutionException 
      * @throws InvalidArgumentException 
+     * DELETE:Function for delete user
      */
-    public function delete(int $id)
+    public function delete($id)
     {
-        $this->authRepository->delete($id);
+        $this->authRepository->destroy($id);
         return $this->response(new MassageResource('User removed'))
             ->setStatusCode(Response::HTTP_GONE);
+    }
+
+    /**
+     * 
+     * @return Application|ResponseFactory|Response 
+     * @throws BindingResolutionException 
+     * @throws InvalidArgumentException 
+     * POST:Function for logout user
+     */
+    public function logout()
+    {
+        $this->authRepository->logout();
+        return $this->response(new MassageResource('Logged out'))
+            ->setStatusCode(Response::HTTP_OK);
     }
 }
