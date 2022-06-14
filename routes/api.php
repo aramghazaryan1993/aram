@@ -14,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('login', [\App\Http\Controllers\API\AuthController::class, 'login']);
 
+
+
+Route::post('forgot-password', [\App\Http\Controllers\API\AuthController::class, 'forgotPassword']);
+Route::post('reset-password', [\App\Http\Controllers\API\AuthController::class, 'reset']);
+// Route::post('/password/email', [\App\Http\Controllers\API\AuthController::class, 'sendPasswordResetLinkEmail'])->middleware(['guest']);
+// Route::post('/password/reset', 'App\Http\Controllers\Api\Auth\AuthController@resetPassword')->name('password.reset');
+
+Route::post('login', [\App\Http\Controllers\API\AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('register', [\App\Http\Controllers\API\AuthController::class, 'register']);

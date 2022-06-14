@@ -4,8 +4,6 @@ namespace App\Repositories;
 
 use App\Http\Controllers\API\BaseController;
 use App\Models\User;
-use Illuminate\Contracts\Container\BindingResolutionException;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class UserRepository
