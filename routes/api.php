@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -53,3 +54,8 @@ Route::post('update-contact', [\App\Http\Controllers\API\ContactController::clas
 Route::get('get-menu', [\App\Http\Controllers\API\MenuController::class, 'getMenu']);
 Route::get('get-submenu', [\App\Http\Controllers\API\MenuController::class, 'getSubMenu']);
 Route::get('get-childemenu', [\App\Http\Controllers\API\MenuController::class, 'getChildeMenu']);
+
+Route::get('get-service-gallery/{id}', [\App\Http\Controllers\API\ServiceGalleryController::class, 'getServiceGallery']);
+Route::post('add-service-gallery', [\App\Http\Controllers\API\ServiceGalleryController::class, 'addServiceGallery']);
+Route::post('update-service-gallery/{id}', [\App\Http\Controllers\API\ServiceGalleryController::class, 'updateServiceGallery']);
+Route::delete('delete-service-gallery/{id}', [\App\Http\Controllers\API\ServiceGalleryController::class, 'deleteServiceGallery']);
