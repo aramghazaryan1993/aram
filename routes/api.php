@@ -67,3 +67,8 @@ Route::delete('delete-service-header-image/{id}', [\App\Http\Controllers\API\Ser
 
 Route::get('get-about-us', [\App\Http\Controllers\API\AboutUsController::class, 'getAboutUs']);
 Route::post('update-about-us', [\App\Http\Controllers\API\AboutUsController::class, 'updateAboutUs']);
+
+Route::post('add-blog', [\App\Http\Controllers\API\BlogController::class, 'addBlog']);
+Route::get('get-blog', [\App\Http\Controllers\API\BlogController::class, 'getBlog']);
+Route::post('update-blog/{id}', [\App\Http\Controllers\API\BlogController::class, 'updateBlog']);
+Route::delete('delete-blog/{id}', [\App\Http\Controllers\API\BlogController::class, 'deleteBlog']);
