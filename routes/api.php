@@ -59,3 +59,8 @@ Route::get('get-service-gallery/{id}', [\App\Http\Controllers\API\ServiceGallery
 Route::post('add-service-gallery', [\App\Http\Controllers\API\ServiceGalleryController::class, 'addServiceGallery']);
 Route::post('update-service-gallery/{id}', [\App\Http\Controllers\API\ServiceGalleryController::class, 'updateServiceGallery']);
 Route::delete('delete-service-gallery/{id}', [\App\Http\Controllers\API\ServiceGalleryController::class, 'deleteServiceGallery']);
+
+Route::get('get-service-header-image/{id}', [\App\Http\Controllers\API\ServiceHeaderImageController::class, 'getServiceHeaderImage']);
+Route::post('add-service-header-image', [\App\Http\Controllers\API\ServiceHeaderImageController::class, 'addServiceHeaderImage']);
+Route::post('update-service-header-image/{id}', [\App\Http\Controllers\API\ServiceHeaderImageController::class, 'updateServiceHeaderImage']);
+Route::delete('delete-service-header-image/{id}', [\App\Http\Controllers\API\ServiceHeaderImageController::class, 'deleteServiceHeaderImage']);
