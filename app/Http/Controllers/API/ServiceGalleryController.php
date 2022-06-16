@@ -34,6 +34,7 @@ class ServiceGalleryController extends BaseController
     /**
      * @param $menuId
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
+     * GET:Function for get service gallery
      */
     public function getServiceGallery(int $menuId)
     {
@@ -55,6 +56,7 @@ class ServiceGalleryController extends BaseController
      * @param ServiceGalleryRequest $request
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
+     * GET:Function for update service gallery
      */
     public function updateServiceGallery(ServiceGalleryRequest $request, int $id)
     {
@@ -65,6 +67,7 @@ class ServiceGalleryController extends BaseController
     /**
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
+     * GET:Function for delete service gallery
      */
     public function deleteServiceGallery(int $id)
     {
