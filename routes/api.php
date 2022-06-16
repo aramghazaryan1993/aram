@@ -64,3 +64,6 @@ Route::get('get-service-header-image/{id}', [\App\Http\Controllers\API\ServiceHe
 Route::post('add-service-header-image', [\App\Http\Controllers\API\ServiceHeaderImageController::class, 'addServiceHeaderImage']);
 Route::post('update-service-header-image/{id}', [\App\Http\Controllers\API\ServiceHeaderImageController::class, 'updateServiceHeaderImage']);
 Route::delete('delete-service-header-image/{id}', [\App\Http\Controllers\API\ServiceHeaderImageController::class, 'deleteServiceHeaderImage']);
+
+Route::get('get-about-us', [\App\Http\Controllers\API\AboutUsController::class, 'getAboutUs']);
+Route::post('update-about-us', [\App\Http\Controllers\API\AboutUsController::class, 'updateAboutUs']);
