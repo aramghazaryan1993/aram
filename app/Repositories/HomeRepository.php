@@ -7,9 +7,9 @@ use App\Models\Home;
 /**
  * Class HomeRepository
  * @package App\Repositories
- * @param string $titleOne 
- * @param string $titleTwo 
- * @param int $id 
+ * @param string $titleOne
+ * @param string $titleTwo
+ * @param int $id
  * @return Home
  */
 
@@ -24,10 +24,10 @@ class HomeRepository
     }
 
     /**
-     * 
-     * @param string $titleOne 
-     * @param string $titleTwo 
-     * @return Home 
+     *
+     * @param string $titleOne
+     * @param string $titleTwo
+     * @return Home
      */
     public function addHome(string $titleOne, string $titleTwo): Home
     {
@@ -35,13 +35,13 @@ class HomeRepository
     }
 
     /**
-     * 
-     * @param string $titleOne 
-     * @param string $titleTwo 
-     * @param int $id 
-     * @return Home 
+     *
+     * @param string $titleOne
+     * @param string $titleTwo
+     * @param int $id
+     * @return Home
      */
-    public function update(string $titleOne, string $titleTwo, int $id): Home
+    public function updateHome(string $titleOne, string $titleTwo, int $id): Home
     {
         $editHome = Home::find($id);
         $editHome->title_one = $titleOne;
@@ -51,11 +51,11 @@ class HomeRepository
     }
 
     /**
-     * 
-     * @param int $id 
-     * @return Home 
+     *
+     * @param int $id
+     * @return Home
      */
-    public function delete(int $id)
+    public function deleteHome(int $id)
     {
         return Home::where('id', $id)->delete();
     }

@@ -26,8 +26,7 @@ class HomeGalleryRepository
 
     /**
      * @param string $image
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @return HomeGallery
      */
     public function addHomeGallery(string $image): HomeGallery
     {
@@ -45,15 +44,13 @@ class HomeGalleryRepository
                 }
             }
         }
-
         return HomeGallery::create(['image' => $homeGallery]);
     }
 
     /**
      * @param string $image
-     * @param int    $id
-     *
-     * @return \Illuminate\Http\JsonResponse
+     * @param int $id
+     * @return HomeGallery
      */
     public function updateHomeGallery(string $image, int $id): HomeGallery
     {
@@ -85,7 +82,6 @@ class HomeGalleryRepository
 
     /**
      * @param int $id
-     *
      * @return HomeGallery
      */
     public function deleteHomeGallery(int $id)

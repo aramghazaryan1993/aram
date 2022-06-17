@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 
 /**
  * Class AboutUsRepository
+ * @package App\Repositories
  * @param string $title
  * @param string $miniText
  * @param string $image
@@ -16,7 +17,6 @@ use Illuminate\Support\Str;
  */
 class AboutUsRepository
 {
-
     /**
      * @return AboutUs[]|\Illuminate\Database\Eloquent\Collection
      */

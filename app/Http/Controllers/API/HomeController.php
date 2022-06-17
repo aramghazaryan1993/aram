@@ -13,15 +13,13 @@ use App\Http\Requests\HomeRequest;
 use App\Http\Requests\HomeGalleryRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Response;
-use InvalidArgumentException;
 
 /**
  * class HomeController
  * @package App\Http\Controllers\API
- * @param HomeRepository $request
- * @param HomeGalleryRepository $request
+ * @param HomeRequest $request
+ * @param HomeGalleryRequest $request
  * @param int $id
  */
 class HomeController extends BaseController
@@ -37,8 +35,8 @@ class HomeController extends BaseController
     private HomeGalleryRepository $homeGalleryRepository;
 
     /**
-     * @param \App\Repositories\HomeRepository        $homeRepository
-     * @param \App\Repositories\HomeGalleryRepository $homeGalleryRepository
+     * @param HomeRepository $homeRepository
+     * @param HomeGalleryRepository $homeGalleryRepository
      */
     public function __construct(HomeRepository $homeRepository, HomeGalleryRepository $homeGalleryRepository)
     {
@@ -48,7 +46,7 @@ class HomeController extends BaseController
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
-     * GET:Function for get home data
+     * GET:Function for get home
      */
     public function getHome()
     {
@@ -57,9 +55,8 @@ class HomeController extends BaseController
     }
 
     /**
-     * 
-     * @param HomeRequest $request 
-     * @return void 
+     * @param HomeRequest $request
+     * @return Application|ResponseFactory|Response|object
      * POST:Function for add home title text
      */
     public function addHome(HomeRequest $request)
@@ -69,34 +66,30 @@ class HomeController extends BaseController
     }
 
     /**
-     * @param \App\Http\Requests\HomeRequest $request
-     * @param                                $id
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
+     * @param HomeRequest $request
+     * @param $id
+     * @return Application|ResponseFactory|Response|object
      * POST:Function for update home title text
      */
-    public function update(HomeRequest $request, $id)
+    public function updateHome(HomeRequest $request, $id)
     {
-        $home = $this->homeRepository->update($request->title_one, $request->title_two, $id);
+        $home = $this->homeRepository->updateHome($request->title_one, $request->title_two, $id);
         return $this->response(new HomeResource($home))->setStatusCode(Response::HTTP_CREATED);
     }
 
     /**
-     * 
-     * @param int $id 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @param int $id
+     * @return Application|ResponseFactory|Response|object
      * DELETE:Function for home title text
      */
-    public function delete(int $id)
+    public function deleteHome(int $id)
     {
-        $this->homeRepository->delete($id);
-        return $this->response(new MassageResource('Delete home text successfully.'))->setStatusCode(Response::HTTP_GONE);
+        $this->homeRepository->deleteHome($id);
+        return $this->response(new MassageResource('Delete home text title successfully.'))->setStatusCode(Response::HTTP_GONE);
     }
 
     /**
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
+     * @return Application|ResponseFactory|Response|object
      * GET: function for get home gallery
      */
     public function getHomeGallery()
@@ -106,10 +99,9 @@ class HomeController extends BaseController
     }
 
     /**
-     * @param \App\Http\Requests\HomeGalleryRequest $request
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
-     * POST: function for add home gallery
+     * @param HomeGalleryRequest $request
+     * @return Application|ResponseFactory|Response|object
+     * POST:Function for add home gallery
      */
     public function addHomeGallery(HomeGalleryRequest $request)
     {
@@ -118,10 +110,10 @@ class HomeController extends BaseController
     }
 
     /**
-     * @param \App\Http\Requests\HomeGalleryRequest $request
-     * @param                                       $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
-     * POST: function for update home gallery
+     * @param HomeGalleryRequest $request
+     * @param int $id
+     * @return Application|ResponseFactory|Response|object
+     * POST:Function for update home gallery
      */
     public function updateHomeGallery(HomeGalleryRequest $request, int $id)
     {
@@ -131,9 +123,8 @@ class HomeController extends BaseController
 
     /**
      * @param int $id
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
-     * DELETE: function for delete home gallery
+     * @return Application|ResponseFactory|Response|object
+     * DELETE:Function for delete home gallery
      */
     public function deleteHomeGallery(int $id)
     {

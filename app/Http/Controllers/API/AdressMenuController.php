@@ -8,31 +8,25 @@ use App\Repositories\AdressMenuRepository;
 use App\Http\Resources\AdressMenuResource;
 use App\Http\Resources\MassageResource;
 use App\Http\Requests\AdressMenuRequest;
-use App\Models\AdressMenu;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Http\Response;
-use InvalidArgumentException;
 
 /**
  * class AdressMenuController
  * @package App\Http\Controllers\API
- * @param AdressMenuRepository $request
+ * @param AdressMenuRequest $request
  * @param int $id
  */
 class AdressMenuController extends BaseController
 {
     /**
-     * 
-     *  @var \App\Repositories\AdressMenuRepository
+     * @var AdressMenuRepository
      */
     private AdressMenuRepository $adressMenuRepository;
 
     /**
-     * 
-     * @param AdressMenuRepository $adressMenuRepository 
-     * @return void 
+     * @param AdressMenuRepository $adressMenuRepository
      */
     public function __construct(AdressMenuRepository $adressMenuRepository)
     {
@@ -40,11 +34,9 @@ class AdressMenuController extends BaseController
     }
 
     /**
-     * 
-     * @param int $int 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @param int $id
+     * @return Application|ResponseFactory|Response|object
+     * GET:Functional for get adress menu
      */
     public function getAdressMenu(int $id)
     {
@@ -53,11 +45,9 @@ class AdressMenuController extends BaseController
     }
 
     /**
-     * 
-     * @param AdressMenuRequest $request 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @param AdressMenuRequest $request
+     * @return Application|ResponseFactory|Response|object
+     * POST:Functional for add adress menu
      */
     public function addAdressMenu(AdressMenuRequest $request)
     {
@@ -66,12 +56,10 @@ class AdressMenuController extends BaseController
     }
 
     /**
-     * 
-     * @param AdressMenuRequest $request 
-     * @param int $id 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @param AdressMenuRequest $request
+     * @param int $id
+     * @return Application|ResponseFactory|Response|object
+     * POST:Functional for update adress menu
      */
     public function updateAdressMenu(AdressMenuRequest $request, int $id)
     {
@@ -80,11 +68,9 @@ class AdressMenuController extends BaseController
     }
 
     /**
-     * 
-     * @param int $id 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @param int $id
+     * @return Application|ResponseFactory|Response|object
+     * DELETE:Function for delete adress menu
      */
     public function deleteAdressMenu(int $id)
     {

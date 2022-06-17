@@ -33,8 +33,7 @@ class ServiceController extends BaseController
 
     /**
      * @param ServiceRequest $request
-     * @param int $menuId
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object|
      * POST:Functional for add service
      */
     public function addService(ServiceRequest $request)

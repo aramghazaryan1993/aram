@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,10 +12,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-
-
-
 Route::post('forgot-password', [\App\Http\Controllers\API\AuthController::class, 'forgotPassword']);
 Route::post('reset-password', [\App\Http\Controllers\API\AuthController::class, 'reset']);
 // Route::post('/password/email', [\App\Http\Controllers\API\AuthController::class, 'sendPasswordResetLinkEmail'])->middleware(['guest']);
@@ -35,8 +29,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('get-home', [\App\Http\Controllers\API\HomeController::class, 'getHome']);
 Route::post('add-home', [\App\Http\Controllers\API\HomeController::class, 'addHome']);
-Route::post('update-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'update']);
-Route::delete('delete-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'delete']);
+Route::post('update-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'updateHome']);
+Route::delete('delete-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'deleteHome']);
 
 Route::get('get-adress-menu/{id}', [\App\Http\Controllers\API\AdressMenuController::class, 'getAdressMenu']);
 Route::post('add-adress-menu', [\App\Http\Controllers\API\AdressMenuController::class, 'addAdressMenu']);

@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
 /**
  * class ServiceHeaderImageController
  * @package App\Http\Controllers\API
- * @param ServiceHeaderImageRepository $request
+ * @param ServiceHeaderImageRequest $request
  * @param int $id
  */
 class ServiceHeaderImageController extends BaseController
