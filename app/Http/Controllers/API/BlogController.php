@@ -6,16 +6,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\BlogRequest;
 use App\Http\Resources\BlogResource;
 use App\Http\Resources\MassageResource;
-use App\Models\Blog;
 use Illuminate\Http\Request;
 use App\Repositories\BlogRepository;
 use Illuminate\Http\Response;
 
 /**
- * class ServiceGalleryController
+ * class BlogController
  * @package App\Http\Controllers\API
+ * @param BlogRequest $request
+ * @param BlogRequest $request
  * @param int $id
- * @param BlogRepository $request
  */
 class BlogController extends BaseController
 {

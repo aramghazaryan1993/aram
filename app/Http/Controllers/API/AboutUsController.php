@@ -10,9 +10,9 @@ use App\Repositories\AboutUsRepository;
 use Illuminate\Http\Response;
 
 /**
- * class ServiceGalleryController
+ * class AboutUsController
  * @package App\Http\Controllers\API
- * @param AboutUsRepository $request
+ * @param AboutUsRequest $request
  */
 class AboutUsController extends BaseController
 {

@@ -3,29 +3,27 @@
 namespace App\Repositories;
 
 use App\Models\Contact;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
  * Class ContactRepository
  * @package App\Repositories
- * @param string $phone 
- * @param string $email 
- * @param string $working 
- * @param string $textHeader 
- * @param string $textFooter 
- * @param string $facebook 
- * @param string $instagram 
- * @param string $logo 
- * @param string $imageHeader 
+ * @param string $phone
+ * @param string $email
+ * @param string $working
+ * @param string $textHeader
+ * @param string $textFooter
+ * @param string $facebook
+ * @param string $instagram
+ * @param string $logo
+ * @param string $imageHeader
  * @return Contact
  */
 class ContactRepository
 {
     /**
      * @param int $count
-     *
      * @return \Illuminate\Database\Eloquent\Collection|\Illuminate\Database\Eloquent\Model
      */
     public function createFakeContact(int $count)
@@ -42,22 +40,19 @@ class ContactRepository
     }
 
     /**
-     * 
-     * @param string $phone 
-     * @param string $email 
-     * @param string $working 
-     * @param string $textHeader 
-     * @param string $textFooter 
-     * @param string $facebook 
-     * @param string $instagram 
-     * @param string $logo 
-     * @param string $imageHeader 
-     * @return Contact 
-     * @throws BindingResolutionException 
+     * @param string $phone
+     * @param string $email
+     * @param string $working
+     * @param string $textHeader
+     * @param string $textFooter
+     * @param string $facebook
+     * @param string $instagram
+     * @param string $logo
+     * @param string $imageHeader
+     * @return Contact
      */
     public function update(string $phone, string $email, string $working, string $textHeader, string $textFooter, string $facebook, string $instagram, string $logo, string $imageHeader): Contact
     {
-
         $editContact = Contact::first();
 
         if (!empty($logo)) {
@@ -101,7 +96,6 @@ class ContactRepository
         $editContact->phone = $phone;
         $editContact->email = $email;
         $editContact->working = $working;
-        $editContact->text_header = $textHeader;
         $editContact->text_header = $textHeader;
         $editContact->text_footer = $textFooter;
         $editContact->facebook = $facebook;

@@ -30,7 +30,7 @@ class ServiceGalleryRepository
      * @param int $menuId
      * @return ServiceGallery
      */
-    public function addServiceGallery(string $image, int $menuId):ServiceGallery
+    public function addServiceGallery(string $image, int $menuId): ServiceGallery
     {
         if (!empty($image)) {
             if (!filter_var($image, FILTER_VALIDATE_URL)) {

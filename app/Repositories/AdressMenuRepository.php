@@ -3,24 +3,21 @@
 namespace App\Repositories;
 
 use App\Models\AdressMenu;
-use Illuminate\Database\Eloquent\Collection;
 
 /**
  * Class AdressMenuRepository
  * @package App\Repositories
- * @param string $name 
- * @param int $menuId 
- * @param int $id 
+ * @param string $name
+ * @param int $menuId
+ * @param int $id
  * @return AdressMenu
  */
-
 class AdressMenuRepository
 {
-
     /**
-     * 
-     * @param int $id 
-     * @return AdressMenu 
+     *
+     * @param int $id
+     * @return AdressMenu
      */
     public function getAdressMenu(int $id)
     {
@@ -28,10 +25,9 @@ class AdressMenuRepository
     }
 
     /**
-     * 
-     * @param string $name 
-     * @param int $menuId 
-     * @return AdressMenu 
+     * @param string $name
+     * @param int $menuId
+     * @return AdressMenu
      */
     public function addAdressMenu(string $name, int $menuId): AdressMenu
     {
@@ -39,11 +35,11 @@ class AdressMenuRepository
     }
 
     /**
-     * 
-     * @param string $name 
-     * @param int $menuId 
-     * @param int $id 
-     * @return AdressMenu 
+     *
+     * @param string $name
+     * @param int $menuId
+     * @param int $id
+     * @return AdressMenu
      */
     public function updateAdressMenu(string $name, int $menuId, int $id): AdressMenu
     {
@@ -55,9 +51,9 @@ class AdressMenuRepository
     }
 
     /**
-     * 
-     * @param int $id 
-     * @return AdressMenu 
+     *
+     * @param int $id
+     * @return AdressMenu
      */
     public function deleteAdressMenu(int $id)
     {

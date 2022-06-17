@@ -10,7 +10,7 @@ use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Response;
 
 /**
- * 
+ * class ContactController
  * @package App\Http\Controllers\API
  * @param ContactRequest $request
  */
@@ -42,7 +42,7 @@ class ContactController extends BaseController
 
     /**
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
-     * GET:Function for get contact data
+     * GET:Function for get contact
      */
     public function getContact()
     {

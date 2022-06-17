@@ -11,27 +11,25 @@ use App\Http\Resources\MassageResource;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\ForgotPasswordRequest;
 use Illuminate\Auth\Events\PasswordReset;
-use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Response;
-use InvalidArgumentException;
 use App\Http\Requests\ResetRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use Psr\Container\NotFoundExceptionInterface;
-use Psr\Container\ContainerExceptionInterface;
 
 /**
  * Class AuthController
  * @package App\Http\Controllers\API
+ * @param UserRequest $request
+ * @param ForgotPasswordRequest $request
+ * @param ResetRequest $request
  */
 class AuthController extends BaseController
 {
     /**
-     * 
      * @var UserRepository
      */
     private UserRepository $authRepository;
@@ -47,8 +45,8 @@ class AuthController extends BaseController
 
     /**
      * @param UserRequest $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
-     * POST:Function for creationg user
+     * @return Application|ResponseFactory|Response|object
+     * POST:Function for created user
      */
     public function register(UserRequest $request)
     {
@@ -58,7 +56,7 @@ class AuthController extends BaseController
 
     /**
      * @param Request $request
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
+     * @return Application|ResponseFactory|Response|object
      * POST:Function for login user
      */
     public function login(Request $request)
@@ -79,10 +77,7 @@ class AuthController extends BaseController
     }
 
     /**
-     * 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @return Application|ResponseFactory|Response|object
      * GET:Function for get user
      */
     public function getUser()
@@ -92,12 +87,9 @@ class AuthController extends BaseController
     }
 
     /**
-     * 
-     * @param Request $request 
-     * @param mixed $id 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @param Request $request
+     * @param $id
+     * @return Application|ResponseFactory|Response|object
      * POST:Function for update user
      */
     public function updateUser(Request $request, $id)
@@ -107,32 +99,24 @@ class AuthController extends BaseController
     }
 
     /**
-     * 
-     * @param int $id 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @param $id
+     * @return Application|ResponseFactory|Response|object
      * DELETE:Function for delete user
      */
     public function delete($id)
     {
         $this->authRepository->delete($id);
-        return $this->response(new MassageResource('User removed'))
-            ->setStatusCode(Response::HTTP_GONE);
+        return $this->response(new MassageResource('User removed'))->setStatusCode(Response::HTTP_GONE);
     }
 
     /**
-     * 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
+     * @return Application|ResponseFactory|Response|object
      * POST:Function for logout user
      */
     public function logout()
     {
         $this->authRepository->logout();
-        return $this->response(new MassageResource('Logged out'))
-            ->setStatusCode(Response::HTTP_OK);
+        return $this->response(new MassageResource('Logged out'))->setStatusCode(Response::HTTP_OK);
     }
 
 
@@ -167,14 +151,9 @@ class AuthController extends BaseController
     // }
 
     /**
-     * 
-     * @param ForgotPasswordRequest $request 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws NotFoundExceptionInterface 
-     * @throws ContainerExceptionInterface 
-     * @throws InvalidArgumentException 
-     * @throws ValidationException 
+     * @param ForgotPasswordRequest $request
+     * @return Application|ResponseFactory|Response|object
+     * @throws ValidationException
      * POST:Function for forgot password user
      */
     public function forgotPassword(ForgotPasswordRequest $request)
@@ -193,14 +172,9 @@ class AuthController extends BaseController
     }
 
     /**
-     * 
-     * @param ResetRequest $request 
-     * @return Application|ResponseFactory|Response 
-     * @throws BindingResolutionException 
-     * @throws InvalidArgumentException 
-     * @throws NotFoundExceptionInterface 
-     * @throws ContainerExceptionInterface 
-     *  POST:Function for reset password user
+     * @param ResetRequest $request
+     * @return Application|ResponseFactory|Response|object
+     * POST:Function for reset password user
      */
     public function reset(ResetRequest $request)
     {

@@ -13,7 +13,7 @@ use Illuminate\Http\Response;
 /**
  * class ServiceGalleryController
  * @package App\Http\Controllers\API
- * @param ServiceGalleryRepository $request
+ * @param ServiceGalleryRequest $request
  * @param int $id
  */
 class ServiceGalleryController extends BaseController
@@ -21,7 +21,7 @@ class ServiceGalleryController extends BaseController
     /**
      * @var ServiceGalleryRepository
      */
-    private ServiceGalleryRepository $contactRepository;
+    private ServiceGalleryRepository $serviceGalleryRepository;
 
     /**
      * @param ServiceGalleryRepository $serviceGalleryRepository
@@ -32,7 +32,7 @@ class ServiceGalleryController extends BaseController
     }
 
     /**
-     * @param $menuId
+     * @param int $menuId
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
      * GET:Function for get service gallery
      */
@@ -45,6 +45,7 @@ class ServiceGalleryController extends BaseController
     /**
      * @param ServiceGalleryRequest $request
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
+     * GET:Function for add service gallery
      */
     public function addServiceGallery(ServiceGalleryRequest $request)
     {
@@ -67,7 +68,7 @@ class ServiceGalleryController extends BaseController
     /**
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
-     * GET:Function for delete service gallery
+     * DELETE:Function for delete service gallery
      */
     public function deleteServiceGallery(int $id)
     {
