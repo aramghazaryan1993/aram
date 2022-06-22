@@ -54,6 +54,17 @@ class BlogController extends BaseController
     }
 
     /**
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
+     */
+    public function getBlogId(int $id)
+    {
+        $getBlogId = $this->blogRepository->getBlogId($id);
+            return $this->response(BlogResource::collection($getBlogId))->setStatusCode(Response::HTTP_OK);
+    }
+
+    /**
      * @param BlogRequest $request
      * @param int $id
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object

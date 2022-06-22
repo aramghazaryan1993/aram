@@ -11,15 +11,16 @@ class BlogResource extends JsonResource
      * Transform the resource into an array.
      *
      * @param \Illuminate\Http\Request $request
+     *
      * @return array|\Illuminate\Contracts\Support\Arrayable|\JsonSerializable
      */
     public function toArray($request)
     {
         return [
-            'id' => $this->resource->id,
-            'menu_id' => $this->resource->title,
+            'id'    => $this->resource->id,
+            'title' => $this->resource->title,
             'image' => Storage::url('blog/' . $this->resource->image),
-            'text' => $this->resource->text
+            'text'  => $this->resource->text,
         ];
     }
 }
