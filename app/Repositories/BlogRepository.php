@@ -25,6 +25,16 @@ class BlogRepository
     }
 
     /**
+     * @param int $id
+     *
+     * @return Blog
+     */
+    public function getBlogId(int $id)
+    {
+        return Blog::where('id', $id)->get();
+    }
+
+    /**
      * @param string $title
      * @param string $image
      * @param string $text
