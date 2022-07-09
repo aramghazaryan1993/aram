@@ -16,7 +16,6 @@ class AdressRequest extends FormRequest
         return [
             'map'            => 'required|string|min:3|max:250',
             'text'           => 'required|string',
-            'url'            => 'required|string|min:3|max:200',
             'adress_menu_id' => 'required|int',
         ];
     }
