@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SelectHomeServiceRequest;
+use App\Http\Resources\SelectHomeServiceResource;
+use App\Repositories\SelectHomeServiceRepository;
 use Illuminate\Http\Request;
 use App\Repositories\HomeRepository;
 use App\Repositories\HomeGalleryRepository;
@@ -30,6 +33,11 @@ class HomeController extends BaseController
     private HomeRepository $homeRepository;
 
     /**
+     * @var \App\Repositories\SelectHomeServiceRepository
+     */
+    private SelectHomeServiceRepository $selectHomeServiceRepository;
+
+    /**
      * @var \App\Repositories\HomeGalleryRepository
      */
     private HomeGalleryRepository $homeGalleryRepository;
@@ -38,10 +46,11 @@ class HomeController extends BaseController
      * @param HomeRepository $homeRepository
      * @param HomeGalleryRepository $homeGalleryRepository
      */
-    public function __construct(HomeRepository $homeRepository, HomeGalleryRepository $homeGalleryRepository)
+    public function __construct(HomeRepository $homeRepository, HomeGalleryRepository $homeGalleryRepository, SelectHomeServiceRepository $selectHomeServiceRepository)
     {
         $this->homeRepository = $homeRepository;
         $this->homeGalleryRepository = $homeGalleryRepository;
+        $this->selectHomeServiceRepository = $selectHomeServiceRepository;
     }
 
     /**
@@ -130,5 +139,21 @@ class HomeController extends BaseController
     {
         $this->homeGalleryRepository->deleteHomeGallery($id);
         return $this->response(new MassageResource('Delete home gallery successfully.'))->setStatusCode(Response::HTTP_GONE);
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
+     */
+    public function getHomeService()
+    {
+        $getSelectHomeService = $this->selectHomeServiceRepository->getSelectHomeService();
+        return $this->response(SelectHomeServiceResource::collection($getSelectHomeService))->setStatusCode(Response::HTTP_OK);
+    }
+
+
+    public function updateSelectHomeService(SelectHomeServiceRequest $request, int $id)
+    {
+        $editHomeSelectHomeService = $this->selectHomeServiceRepository->updateSelectHomeService($request->menu_id, $id);
+        return $this->response(new SelectHomeServiceResource($editHomeSelectHomeService))->setStatusCode(Response::HTTP_CREATED);
     }
 }

@@ -17,6 +17,8 @@ class CreateAdressMenusTable extends Migration
         Schema::create('adress_menus', function (Blueprint $table) {
             $table->id();
             $table->string('name', 100)->nullable();
+            $table->enum('type', ['accueil','serrurier','plombier','electricien','blog','about']);
+            $table->text('url')->collation('utf8mb4_unicode_ci')->nullable();
             $table->unsignedBigInteger('menu_id');
             $table->foreign('menu_id')->references('id')->on('menus')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();

@@ -32,6 +32,10 @@ Route::post('add-home', [\App\Http\Controllers\API\HomeController::class, 'addHo
 Route::post('update-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'updateHome']);
 Route::delete('delete-home/{id}', [\App\Http\Controllers\API\HomeController::class, 'deleteHome']);
 
+Route::get('get-home-select-service', [\App\Http\Controllers\API\HomeController::class, 'getHomeService']);
+Route::post('update-home-select-service/{id}', [\App\Http\Controllers\API\HomeController::class, 'updateSelectHomeService']);
+
+
 Route::get('get-adress-menu/{id}', [\App\Http\Controllers\API\AdressMenuController::class, 'getAdressMenu']);
 Route::post('add-adress-menu', [\App\Http\Controllers\API\AdressMenuController::class, 'addAdressMenu']);
 Route::post('update-adress-menu/{id}', [\App\Http\Controllers\API\AdressMenuController::class, 'updateAdressMenu']);
@@ -77,3 +81,8 @@ Route::post('add-adress',[\App\Http\Controllers\API\AdressController::class, 'ad
 Route::get('get-adress/{id}',[\App\Http\Controllers\API\AdressController::class, 'getAdress']);
 Route::delete('delete-adress/{id}',[\App\Http\Controllers\API\AdressController::class, 'deleteAdress']);
 Route::post('update-adress/{id}',[\App\Http\Controllers\API\AdressController::class, 'updateAdress']);
+
+Route::get('get-price-list',[\App\Http\Controllers\API\PriceListController::class, 'getPriceList']);
+Route::post('add-price-list',[\App\Http\Controllers\API\PriceListController::class, 'addPriceList']);
+Route::post('update-price-list/{id}',[\App\Http\Controllers\API\PriceListController::class, 'updatePriceList']);
+

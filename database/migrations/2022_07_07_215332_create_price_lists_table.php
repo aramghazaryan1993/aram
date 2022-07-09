@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMenusTable extends Migration
+class CreatePriceListsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateMenusTable extends Migration
      */
     public function up()
     {
-        Schema::create('menus', function (Blueprint $table) {
+        Schema::create('price_lists', function (Blueprint $table) {
             $table->id();
-            $table->string('name',100);
-            $table->bigInteger('parent_id')->nullable();
-            $table->enum('type', ['accueil','serrurier','plombier','electricien','blog','about']);
-            $table->text('url')->collation('utf8mb4_unicode_ci')->nullable();
+            $table->string('title',250)->collation('utf8mb4_unicode_ci')->nullable();
+            $table->string('price',100)->collation('utf8mb4_unicode_ci')->nullable();
+            $table->text('text')->collation('utf8mb4_unicode_ci')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateMenusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('menus');
+        Schema::dropIfExists('price_lists');
     }
 }
