@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class AdressMenuResource extends JsonResource
+class AdressResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,10 @@ class AdressMenuResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id'      => $this->resource->id,
-            'name'    => $this->resource->name,
-            'url'     => $this->resource->url,
-            'type'    => $this->resource->type,
-            'menu_id' => $this->resource->menu_id,
+            'map'              => $this->resource->map,
+            'text'             => $this->resource->text,
+            'adress_menu_id'   => $this->resource->adress_menu_id,
+            'adress_menu_name' => $this->resource->name,
         ];
     }
 }
