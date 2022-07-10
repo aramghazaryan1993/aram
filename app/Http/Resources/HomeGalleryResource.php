@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class HomeGalleryResource extends JsonResource
 {
@@ -15,7 +16,7 @@ class HomeGalleryResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'image' => $this->resource->image
+            'image' => Storage::url('home_galleryg/' . $this->resource->image),
         ];
     }
 }
