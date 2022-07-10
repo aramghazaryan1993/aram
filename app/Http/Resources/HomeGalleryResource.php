@@ -16,7 +16,7 @@ class HomeGalleryResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'image' => Storage::url('home_galleryg/' . $this->resource->image),
+            'image' => Storage::url('home_gallery/' . $this->resource->image),
         ];
     }
 }
