@@ -23,7 +23,7 @@ class AdressRepository
     {
         return Adress::select('adress.id', 'adress.map', 'adress.text', 'adress_menus.url', 'adress.adress_menu_id', 'adress_menus.name')
         ->join('adress_menus','adress.adress_menu_id', '=', 'adress_menus.id')
-        ->where('adress.id', $adressMenuId)->get();
+        ->where('adress.adress_menu_id', $adressMenuId)->get();
     }
 
     /**
