@@ -44,13 +44,14 @@ class ServiceController extends BaseController
 
     /**
      * @param int $menuId
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|Response|object
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
      * GET:Functional for get service
      */
     public function getService(int $menuId)
     {
         $getService = $this->serviceRepository->getService($menuId);
-                return $this->response(ServiceResource::collection($getService))->setStatusCode(Response::HTTP_OK);
+                return $this->response(new ServiceResource($getService))->setStatusCode(Response::HTTP_OK);
     }
 
     /**

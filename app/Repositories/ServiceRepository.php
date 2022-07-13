@@ -52,7 +52,7 @@ class  ServiceRepository
      */
     public function getService(int $menuId)
     {
-        return Service::find($menuId)->get();
+        return Service::where('menu_id',$menuId)->first();
     }
 
     /**
