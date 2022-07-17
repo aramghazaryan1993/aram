@@ -21,6 +21,7 @@ class AdressResource extends JsonResource
             'adress_menu_id'   => $this->resource->adress_menu_id,
             'adress_menu_name' => $this->resource->name,
             'menu_id'          => $this->resource->menu_id,
+            'type'             => $this->resource->type,
         ];
     }
 }
