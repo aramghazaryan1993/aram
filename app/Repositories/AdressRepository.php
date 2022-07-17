@@ -21,7 +21,7 @@ class AdressRepository
      */
     public function getAdress(int $adressMenuId)
     {
-        return Adress::select('adress.id', 'adress.map', 'adress.text', 'adress_menus.url', 'adress.adress_menu_id', 'adress_menus.name')
+        return Adress::select('adress.id', 'adress.map', 'adress.text', 'adress_menus.url', 'adress.adress_menu_id', 'adress_menus.menu_id as menu_id')
         ->join('adress_menus','adress.adress_menu_id', '=', 'adress_menus.id')
         ->where('adress.adress_menu_id', $adressMenuId)->get();
     }
