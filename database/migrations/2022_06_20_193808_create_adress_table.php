@@ -15,7 +15,7 @@ class CreateAdressTable extends Migration
     {
         Schema::create('adress', function (Blueprint $table) {
             $table->id();
-            $table->string('map',200)->collation('utf8mb4_unicode_ci')->nullable();
+            $table->text('map')->collation('utf8mb4_unicode_ci')->nullable();
             $table->text('text')->collation('utf8mb4_unicode_ci')->nullable();
             $table->unsignedBigInteger('adress_menu_id');
             $table->foreign('adress_menu_id')->references('id')->on('adress_menus')->onDelete('cascade')->onUpdate('cascade');
