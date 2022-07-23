@@ -14,7 +14,7 @@ class AdressRequest extends FormRequest
     public function rules()
     {
         return [
-            'map'            => 'required|string|min:3|max:250',
+            'map'            => 'required|string',
             'text'           => 'required|string',
             'adress_menu_id' => 'required|int',
         ];
