@@ -13,6 +13,7 @@ use Illuminate\Support\Str;
  * @param string $image
  * @param string $text
  * @param string $textHeader
+ * @param string $fullText
  * @param int $menuId
  * @param int $id
  * @return Service
@@ -24,10 +25,11 @@ class  ServiceRepository
      * @param string $image
      * @param string $text
      * @param string $textHeader
+     * @param string $fullText
      * @param int $menuId
      * @return Service
      */
-    public function addService(string $title, string $image, string $text, string $textHeader, int $menuId): Service
+    public function addService(string $title, string $image, string $text, string $textHeader, string $fullText, int $menuId): Service
     {
         if (!empty($image)) {
             if (!filter_var($image, FILTER_VALIDATE_URL)) {
@@ -43,7 +45,7 @@ class  ServiceRepository
                 }
             }
         }
-        return Service::create(['title' => $title, 'image' => $serviceImage, 'text' => $text, 'text_header' => $textHeader, 'menu_id' => $menuId]);
+        return Service::create(['title' => $title, 'image' => $serviceImage, 'text' => $text, 'text_header' => $textHeader, 'full_text' => $fullText, 'menu_id' => $menuId]);
     }
 
     /**
@@ -60,11 +62,12 @@ class  ServiceRepository
      * @param string $image
      * @param string $text
      * @param string $textHeader
+     * @param string $fullText
      * @param int $menuId
      * @param int $id
      * @return Service
      */
-    public function updateService(string $title, string $image, string $text, string $textHeader, int $menuId, int $id): Service
+    public function updateService(string $title, string $image, string $text, string $textHeader, int $menuId, string $fullText, int $id): Service
     {
         $editService = Service::find($id);
 
@@ -91,6 +94,7 @@ class  ServiceRepository
         $editService->image = $serviceImage;
         $editService->text = $text;
         $editService->text_header = $textHeader;
+        $editService->full_text = $fullText;
         $editService->menu_id = $menuId;
         $editService->save();
         return $editService;

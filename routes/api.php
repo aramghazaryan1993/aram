@@ -82,7 +82,8 @@ Route::get('get-adress/{id}',[\App\Http\Controllers\API\AdressController::class,
 Route::delete('delete-adress/{id}',[\App\Http\Controllers\API\AdressController::class, 'deleteAdress']);
 Route::post('update-adress/{id}',[\App\Http\Controllers\API\AdressController::class, 'updateAdress']);
 
-Route::get('get-price-list',[\App\Http\Controllers\API\PriceListController::class, 'getPriceList']);
+Route::get('get-price-list/{id}',[\App\Http\Controllers\API\PriceListController::class, 'getPriceList']);
 Route::post('add-price-list',[\App\Http\Controllers\API\PriceListController::class, 'addPriceList']);
 Route::post('update-price-list/{id}',[\App\Http\Controllers\API\PriceListController::class, 'updatePriceList']);
+Route::delete('delete-price-list/{id}',[\App\Http\Controllers\API\PriceListController::class, 'deletePriceList']);
 

@@ -38,7 +38,7 @@ class ServiceController extends BaseController
      */
     public function addService(ServiceRequest $request)
     {
-        $addService = $this->serviceRepository->addService($request->title, $request->image, $request->text, $request->text_header, $request->menu_id);
+        $addService = $this->serviceRepository->addService($request->title, $request->image, $request->text, $request->text_header, $request->full_text, $request->menu_id);
                 return $this->response(new ServiceResource($addService))->setStatusCode(Response::HTTP_CREATED);
     }
 
@@ -62,7 +62,7 @@ class ServiceController extends BaseController
      */
     public function updateService(ServiceRequest $request, int $id)
     {
-        $editService = $this->serviceRepository->updateService($request->title, $request->image, $request->text, $request->text_header, $request->menu_id, $id);
+        $editService = $this->serviceRepository->updateService($request->title, $request->image, $request->text, $request->text_header, $request->menu_id, $request->full_text, $id);
                     return $this->response(new ServiceResource($editService))->setStatusCode(Response::HTTP_CREATED);
     }
 

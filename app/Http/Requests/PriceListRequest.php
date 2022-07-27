@@ -14,9 +14,10 @@ class PriceListRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|string|min:3|max:250',
-            'price' => 'required|string',
-            'text'  => 'required|string'
+            'title'   => 'required|string|min:3|max:250',
+            'price'   => 'required|string',
+            'text'    => 'required|string',
+            'menu_id' => 'required|int',
         ];
     }
 }
