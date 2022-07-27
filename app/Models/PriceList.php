@@ -9,7 +9,7 @@ class PriceList extends Model
 {
     use HasFactory;
 
-    protected $table    = 'price_lists';
+    protected $table = 'price_lists';
 
-    protected $fillable = ['title', 'price', 'text'];
+    protected $fillable = ['title', 'price', 'text', 'menu_id'];
 }

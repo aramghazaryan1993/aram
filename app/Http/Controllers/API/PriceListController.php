@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MassageResource;
 use App\Http\Resources\PriceListResource;
 use Illuminate\Http\Request;
 use App\Http\Requests\PriceListRequest;
@@ -31,11 +32,13 @@ class PriceListController extends BaseController
     }
 
     /**
+     * @param int $menuId
+     *
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
      */
-    public function getPriceList()
+    public function getPriceList(int $menuId)
     {
-        $getPriceList = $this->priceListRepository->getPriceList();
+        $getPriceList = $this->priceListRepository->getPriceList($menuId);
             return $this->response(PriceListResource::collection($getPriceList))->setStatusCode(Response::HTTP_OK);
     }
 
@@ -46,7 +49,7 @@ class PriceListController extends BaseController
      */
     public function addPriceList(PriceListRequest $request)
     {
-        $addPriceList = $this->priceListRepository->addPriceList($request->title, $request->price, $request->text);
+        $addPriceList = $this->priceListRepository->addPriceList($request->title, $request->price, $request->text, $request->menu_id);
         return $this->response(new PriceListResource($addPriceList))->setStatusCode(Response::HTTP_CREATED);
     }
 
@@ -58,8 +61,19 @@ class PriceListController extends BaseController
      */
     public function updatePriceList(PriceListRequest $request, int $id)
     {
-        $editPriceList = $this->priceListRepository->editPriceList($request->title, $request->price, $request->text, $id);
+        $editPriceList = $this->priceListRepository->editPriceList($request->title, $request->price, $request->text, $request->menu_id, $id);
         return $this->response(new PriceListResource($editPriceList))->setStatusCode(Response::HTTP_CREATED);
+    }
+
+    /**
+     * @param int $id
+     *
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response|object
+     */
+    public function deletePriceList(int $id)
+    {
+        $this->priceListRepository->deletePriceList($id);
+        return $this->response(new MassageResource('Delete price list successfully.'))->setStatusCode(Response::HTTP_GONE);
     }
 
 
