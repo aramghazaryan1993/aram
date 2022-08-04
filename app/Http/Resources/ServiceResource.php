@@ -22,6 +22,7 @@ class ServiceResource extends JsonResource
             'text'        => $this->resource->text,
             'text_header' => $this->resource->text_header,
             'full_text'   => $this->resource->full_text,
+            'id'          => $this->resource->id,
             'menu_id'     => $this->resource->menu_id,
         ];
     }
