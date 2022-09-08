@@ -12,6 +12,6 @@ class AdressMenu extends Model
     protected $table = 'adress_menus';
 
     protected $fillable = [
-        'name', 'menu_id'
+        'name', 'menu_id', 'type', 'url'
     ];
 }

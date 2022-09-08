@@ -51,7 +51,7 @@ class AdressMenuController extends BaseController
      */
     public function addAdressMenu(AdressMenuRequest $request)
     {
-        $addAdressMenu = $this->adressMenuRepository->addAdressMenu($request->name, $request->menu_id);
+        $addAdressMenu = $this->adressMenuRepository->addAdressMenu($request->name, $request->type, $request->url, $request->menu_id);
         return $this->response(new AdressMenuResource($addAdressMenu))->setStatusCode(Response::HTTP_CREATED);
     }
 
@@ -63,7 +63,7 @@ class AdressMenuController extends BaseController
      */
     public function updateAdressMenu(AdressMenuRequest $request, int $id)
     {
-        $editAdressMenu = $this->adressMenuRepository->updateAdressMenu($request->name, $request->menu_id, $id);
+        $editAdressMenu = $this->adressMenuRepository->updateAdressMenu($request->name, $request->type, $request->url, $request->menu_id, $id);
         return $this->response(new AdressMenuResource($editAdressMenu))->setStatusCode(Response::HTTP_CREATED);
     }
 
