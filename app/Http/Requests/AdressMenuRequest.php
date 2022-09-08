@@ -15,6 +15,8 @@ class AdressMenuRequest extends FormRequest
     {
         return [
             'name'    => 'required|min:2|max:100',
+            'type'    => 'required|min:2|max:100',
+            'url'    => 'required|min:2|max:100',
             'menu_id' => 'required|int',
         ];
     }

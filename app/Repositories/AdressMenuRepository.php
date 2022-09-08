@@ -26,25 +26,32 @@ class AdressMenuRepository
 
     /**
      * @param string $name
-     * @param int $menuId
+     * @param string $type
+     * @param string $url
+     * @param int    $menuId
+     *
      * @return AdressMenu
      */
-    public function addAdressMenu(string $name, int $menuId): AdressMenu
+    public function addAdressMenu(string $name, string $type, string $url, int $menuId): AdressMenu
     {
-        return AdressMenu::create(['name' => $name, 'menu_id' => $menuId]);
+        return AdressMenu::create(['name' => $name, 'type' => $type, 'url' => $url, 'menu_id' => $menuId]);
     }
 
     /**
-     *
      * @param string $name
-     * @param int $menuId
-     * @param int $id
+     * @param string $type
+     * @param string $url
+     * @param int    $menuId
+     * @param int    $id
+     *
      * @return AdressMenu
      */
-    public function updateAdressMenu(string $name, int $menuId, int $id): AdressMenu
+    public function updateAdressMenu(string $name, string $type, string $url, int $menuId, int $id): AdressMenu
     {
         $editAdressMenu = AdressMenu::find($id);
         $editAdressMenu->name = $name;
+        $editAdressMenu->type = $type;
+        $editAdressMenu->url = $url;
         $editAdressMenu->menu_id = $menuId;
         $editAdressMenu->save();
         return $editAdressMenu;
