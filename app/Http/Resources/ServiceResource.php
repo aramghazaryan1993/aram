@@ -17,12 +17,12 @@ class ServiceResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'          => $this->resource->id,
             'title'       => $this->resource->title,
             'image'       => Storage::url('service/' . $this->resource->image),
             'text'        => $this->resource->text,
             'text_header' => $this->resource->text_header,
             'full_text'   => $this->resource->full_text,
-            'id'          => $this->resource->id,
             'menu_id'     => $this->resource->menu_id,
         ];
     }

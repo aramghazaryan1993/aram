@@ -16,6 +16,7 @@ class AdressResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id'               => $this->resource->id,
             'map'              => $this->resource->map,
             'text'             => $this->resource->text,
             'adress_menu_id'   => $this->resource->adress_menu_id,
